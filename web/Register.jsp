@@ -11,6 +11,7 @@
     <meta charset="utf-8" />
     <title>Register</title>
     <link rel="stylesheet" type="text/css" href="Login/login.css"/>
+    <script src="jquery/jquery-3.6.1.min.js"></script>
 
 </head>
 <body>
@@ -36,7 +37,17 @@
           <label><span style="color: gainsboro">Confirm:</span></label>
           <span><input type="password" placeholder="Confirm" name="password_Confirm"></span>
        </div>
-
+        <br>
+        <div>
+            <img src="CheckCodeServlet" width="13%" height="20" id="checkCodeImg"/>
+            <script type="text/javascript">
+                $("#checkCodeImg").click(function () {
+                    //重新设置属性的值，当点击该图片时
+                    $("#checkCodeImg").attr("src","CheckCodeServlet?m="+Math.random());
+                });
+            </script>
+            <input name="checkCode" placeholder="验证码" type="text" />
+        </div>
         <div>
             <input type="submit" value="Sign up" class="submit">
         </div>

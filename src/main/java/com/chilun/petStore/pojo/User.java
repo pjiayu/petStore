@@ -76,7 +76,7 @@ public class User {
         this.account = account;
     }
 
-    public void User(String account,String password,String name){
+    public User(String account,String password,String name){
         this.account=account;
         this.password=password;
         this.name=name;

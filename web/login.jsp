@@ -12,6 +12,7 @@
     <title>Sign in</title>
     <link rel="stylesheet" type="text/css" href="Login/login.css"/>
     <link rel="stylesheet" type="text/css" href="font/iconfont.css"/>
+    <script src="jquery/jquery-3.6.1.min.js"></script>
 
 </head>
 
@@ -31,7 +32,20 @@
         </div>
 
         <div>
-            <a href="Register.jsp"><span style="font-size: x-small; color: aqua; ">Forgot password?</span></a>
+            <a href="ForgetPsw.jsp"><span style="font-size: x-small; color: aqua;float: right ">Forgot password?</span></a>
+        </div>
+
+        <br>
+        <div>
+        <img src="CheckCodeServlet" width="13%" height="20" id="checkCodeImg"/>
+        <script type="text/javascript">
+            $("#checkCodeImg").click(function () {
+                //重新设置属性的值，当点击该图片时
+                $("#checkCodeImg").attr("src","CheckCodeServlet?m="+Math.random());
+            });
+        </script>
+        <input name="checkCode" placeholder="验证码" type="text" />
+
         </div>
         <div>
             <input type="submit" value="Sign in" class="submit">
@@ -47,6 +61,9 @@
             <%
 
                 String msg=(String)request.getAttribute("msg");
+                if(msg==null) {
+                    msg = (String) request.getSession().getAttribute("msg");
+                }
                 if(msg!=null){
                     out.print("<font color='darkorange'>"+msg+"</font>");
                 }
@@ -54,8 +71,6 @@
         </div>
 
     </div>
-
-
 
 </form>
 </body>

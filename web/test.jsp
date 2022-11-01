@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="/css/PetsCss.css">
+    <link rel="stylesheet" type="text/css" href="/css/PetCss.css">
 </head>
 <body>
 test

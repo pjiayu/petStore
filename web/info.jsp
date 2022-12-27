@@ -54,8 +54,45 @@
      .submit:hover{
         background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
     }
-
+    .okmsg{
+        color: green;
+    }
+    .errormsg{
+        color: red;
+    }
 </style>
+
+
+<script>
+    var xhr;
+    function checkAccount(){
+        console.log("checkAccount");
+        var account=document.getElementById('account').value;
+        xhr=new XMLHttpRequest();
+        xhr.onreadystatechange=process;
+        xhr.open("GET","accountIsExist?account="+account,true);
+        xhr.send(null);
+    }
+
+    function process() {
+        if(xhr.readyState==4){
+            if(xhr.status==200){
+                var responseInfo=xhr.responseText;
+                console.log(responseInfo);
+                var msg=document.getElementById('isExistInfo');
+                if(responseInfo==='Not Exist'){
+                    msg.classList.remove('errormsg')
+                    msg.classList.add('okmsg');
+                    msg.innerText='Account可用';
+                }else{
+                    msg.classList.add('errormsg');
+                    msg.innerText='Account不可用';
+                }
+            }
+        }
+    }
+
+</script>
 <%
     User user=(User)request.getSession().getAttribute("user");
     String account=user.getAccount();

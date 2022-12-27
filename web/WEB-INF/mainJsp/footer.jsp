@@ -60,7 +60,7 @@
 
         <div class="descColumn">
             <span class="descColumnTitle">手机petStore(cqy微信)</span>
-            <a href="#nowhere"><img src="img/site/ma.png"></a>
+            <a href="#nowhere"><img src="img/erweima.jpg" style="width:180px;height: 150px "></a>
         </div>
     </div>
 

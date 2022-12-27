@@ -18,6 +18,10 @@
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.36" />
           <element id="library" level="project" name="Maven: com.beust:jcommander:1.82" />
           <element id="library" level="project" name="Maven: org.webjars:jquery:3.6.0" />
+          <element id="file-copy" path="$USER_HOME$/Java/jakarta-taglibs-standard-1.1.2/lib/jstl.jar" />
+          <element id="file-copy" path="$USER_HOME$/Java/Tomcat 9.0_Tomcat9__/lib/servlet-api.jar" />
+          <element id="file-copy" path="$USER_HOME$/Java/jakarta-taglibs-standard-1.1.2/lib/standard.jar" />
+          <element id="file-copy" path="$USER_HOME$/Java/Tomcat 9.0_Tomcat9__/lib/jsp-api.jar" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="petStore/web/Web" />

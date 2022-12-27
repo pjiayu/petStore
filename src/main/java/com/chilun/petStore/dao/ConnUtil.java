@@ -1,5 +1,7 @@
 package com.chilun.petStore.dao;
 
+import org.junit.Test;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -11,9 +13,17 @@ public class ConnUtil {
     //private static ThreadLocal<Object> threadLocal3 = new ThreadLocal<>();
 
     public static final String DRIVER = "com.mysql.cj.jdbc.Driver" ;
-    public static final String URL = "jdbc:mysql://localhost:3306/petstoredb?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false";
+    public static final String URL = "jdbc:mysql://localhost:3306/petstoredb?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8";
     public static final String USER = "root";
-    public static final String PWD = "20030322" ;
+    public static final String PWD = "pjy20031207" ;
+
+//    @Test
+//    public void test1(){
+//        Connection connection=createConn();
+//        System.out.println(connection);
+//
+//    }
+
 
     private static Connection createConn(){
         try {

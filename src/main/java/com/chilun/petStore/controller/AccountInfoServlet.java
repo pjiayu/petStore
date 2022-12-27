@@ -3,7 +3,6 @@ package com.chilun.petStore.controller;
 import com.chilun.petStore.Util.Logback;
 import com.chilun.petStore.pojo.User;
 import com.chilun.petStore.service.UserService;
-import org.testng.annotations.Test;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -40,6 +39,7 @@ public class AccountInfoServlet extends HttpServlet {
             userService=new UserService();
 
 
+
             if(userService.isExist(account)){
                 req.setAttribute("msg","该账户名已存在!");
                 req.getRequestDispatcher("/WEB-INF/mainJsp/info.jsp").forward(req,resp);
@@ -52,6 +52,7 @@ public class AccountInfoServlet extends HttpServlet {
                 user.setAddress(address);
 
                 userService.updatePsw(user);
+                resp.sendRedirect("/main");
             }
 
 
@@ -61,7 +62,7 @@ public class AccountInfoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req,resp);
     }
-    @Test
+
     public void  a() throws IOException {
         Logger logger= Logback.getlog();
         logger.finest("finest");

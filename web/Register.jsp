@@ -34,6 +34,45 @@
         </span>
 </nav>
 
+<style>
+    .okmsg{
+        color: green;
+    }
+    .errormsg{
+        color: red;
+    }
+</style>
+
+<script>
+    var xhr;
+    function checkAccount(){
+        console.log("checkAccount");
+        var account=document.getElementById('account').value;
+        xhr=new XMLHttpRequest();
+        xhr.onreadystatechange=process;
+        xhr.open("GET","accountIsExist?account="+account,true);
+        xhr.send(null);
+    }
+
+    function process() {
+        if(xhr.readyState==4){
+            if(xhr.status==200){
+                var responseInfo=xhr.responseText;
+                console.log(responseInfo);
+                var msg=document.getElementById('isExistInfo');
+                if(responseInfo==='Not Exist'){
+                    msg.classList.remove('errormsg')
+                    msg.classList.add('okmsg');
+                    msg.innerText='Account可用';
+                }else{
+                    msg.classList.add('errormsg');
+                    msg.innerText='Account不可用';
+                }
+            }
+        }
+    }
+
+</script>
 <body>
 <form action="register" method="post">
     <div id="login-box">
@@ -42,12 +81,10 @@
         <div class="input-box">
             <label>
                 <span style="color: gainsboro">account:</span>
-                <span><input type="text" placeholder="Account" name="account"></span>
+                <span><input type="text" placeholder="Account" name="account" id="account" onblur="checkAccount()"></span>
+                <br>
+                <span id="isExistInfo" style="font-size: x-small"></span>
             </label>
-            <%
-                //想实现注册完登录栏默认有account
-                String account=(String)request.getSession().getAttribute("account");
-            %>
         </div>
 
        <div class="input-box">

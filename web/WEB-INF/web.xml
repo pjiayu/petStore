@@ -80,6 +80,14 @@
         <url-pattern>/BuyServlet</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>mouseoverServlet</servlet-name>
+        <servlet-class>com.chilun.petStore.controller.mouseoverServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>mouseoverServlet</servlet-name>
+        <url-pattern>/mouseoverServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>addCartServlet</servlet-name>
         <servlet-class>com.chilun.petStore.controller.addCartServlet</servlet-class>
     </servlet>

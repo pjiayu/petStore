@@ -11,7 +11,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"
          pageEncoding="UTF-8" isELIgnored="false" %>
-
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <style>
     /* 按钮 购买 */
     .fileinput-button {
@@ -63,18 +63,48 @@
      }
 
 </style>
+<script type="text/javascript">
+    function showInform(categoryId) {
+        $.ajax({
+            type: "get",
+            url: "/mouseoverServlet",
+            data: {categoryId: categoryId},
+            dataType:"text",
+            success: function (data) {
+                console.log(data)
+                var inform = document.getElementById("inform");
+                inform.innerText = data;
+                inform.style.display = "block";
+            },
+        })
+    }
 
+    //隐藏悬浮层
+    function hiddenInform(event){
+        var informDiv = document.getElementById('inform');
+        var x=event.clientX;
+        var y=event.clientY;
+        var divx1 = informDiv.offsetLeft;
+        var divy1 = informDiv.offsetTop;
+        var divx2 = informDiv.offsetLeft + informDiv.offsetWidth;
+        var divy2 = informDiv.offsetTop + informDiv.offsetHeight;
+        if( x < divx1 || x > divx2 || y < divy1 || y > divy2){
+            document.getElementById('inform').style.display='none';
+        }
+    }
+
+</script>
 <body>
 
 <div align="center">
     <!-- 【导航栏】 -->
-    <div  style="margin-top: 20px;">
+    <div  style="margin-top: 20px;" >
         <span class="head" style="text-align: left">
             <span style="margin-left: 10px" class="glyphicon glyphicon-th-list"></span>
             <span style="margin-left: 10px">宠物分类</span>
         </span>
 
-        <span align="center" style="margin-right: 20px;font-size: 15px">
+        <span align="center" style="margin-right: 20px;font-size: 15px" >
             <a href="select?species=0">小猫</a>
         </span>
         <span align="center" style="margin-right: 20px;font-size: 15px">
@@ -115,28 +145,31 @@
 
     %>
 <div align="center">
-
+    <div id="inform" style="display: none;position: absolute;background: #3c3c3c;color: white;margin-left: 45%;height: 150px;width: 200px"></div>
     <!-- 【自定义  列表】 -->
     <div>
 
         <!-- 第1行  -->
         <div style="display: table; border-spacing: 30px;">
 
+
             <!-- pet1-1 -->
-            <div style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;">
+            <div style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;"  onmouseover="showInform(1);" onmousemove="hiddenInform(event);">
                 <!-- 图片 -->
                 <a href="pet?petID=${petList0[0].petID}&from=main">
-                    <c:if test="${petList0[0].amount ne 0}">
-                        <img  style="width: 200px; height: 200px"
-                              src="${petList0[0].picture}"
-                              title="pet1-1" alt="图片缺失" class="picture"/>
-                    </c:if>
 
-                    <c:if test="${petList0[0].amount eq 0}">
-                        <img  style="width: 200px; height: 200px"
-                              src=“/”
-                              title="pet1-1" alt="宠物暂时空缺" class="picture"/>
-                    </c:if>
+                        <c:if test="${petList0[0].amount ne 0}">
+                            <img  style="width: 200px; height: 200px"
+                                  src="${petList0[0].picture}"
+                                  title="pet1-1" alt="图片缺失" class="picture" />
+                        </c:if>
+
+                        <c:if test="${petList0[0].amount eq 0}">
+                            <img  style="width: 200px; height: 200px"
+                                  src=“/”
+                                  title="pet1-1" alt="宠物暂时空缺" class="picture"/>
+                        </c:if>
+
 
                 </a>
                 <div
@@ -162,10 +195,11 @@
                     </div>
 
                 </div>
+
             </div>
 
             <!-- pet1-2 -->
-            <div style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;">
+            <div style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;" onmouseover="showInform(2);" onmousemove="hiddenInform(event);">
                 <!-- 图片 -->
                 <a href="pet?petID=${petList1[0].petID}&from=main">
                     <c:if test="${petList1[0].amount ne 0}">
@@ -203,7 +237,7 @@
 
 
             <!-- pet1-3 -->
-            <div style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;">
+            <div style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;" onmouseover="showInform(3);" onmousemove="hiddenInform(event);">
                 <!-- 图片 -->
                 <a href="pet?petID=${petList2[0].petID}&from=main">
                     <c:if test="${petList2[0].amount ne 0}">
@@ -240,7 +274,7 @@
 
 
             <!-- pet1-4 -->
-            <div style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;">
+            <div style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;" onmouseover="showInform(4);" onmousemove="hiddenInform(event);">
                 <!-- 图片 -->
                 <a href="pet?petID=${petList3[0].petID}&from=main">
                     <c:if test="${petList3[0].amount ne 0}">
@@ -276,7 +310,7 @@
             </div>
 
             <!-- pet1-5 -->
-            <div style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;">
+            <div style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;" onmouseover="showInform(5);" onmousemove="hiddenInform(event);">
                 <!-- 图片 -->
                 <a href="pet?petID=${petList4[0].petID}&from=main">
                     <c:if test="${petList4[0].amount ne 0}">
@@ -314,7 +348,7 @@
         </div>
 
         <!-- 第2行  -->
-        <div style="display: table; border-spacing: 30px;">
+        <div style="display: table; border-spacing: 30px;" onmouseover="showInform(6);" onmousemove="hiddenInform(event);">
 
             <!-- pet2-1 -->
             <div style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;">
